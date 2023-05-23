@@ -6,36 +6,94 @@ Our very own flavour of the [Scala Toolkit].
 
 ## Overview
 
-Typelevel toolkit is a meta library that currently includes these libraries:
+Typelevel Toolkit is a meta library that currently includes these libraries:
 
-- [Cats] and [Cats Effect]
-- [fs2] and [fs2 I/O]
-- [fs2 data csv] and its generic module
-- [Http4s Ember client]
-- [Circe] and http4s integration
-- [Decline Effect]
-- [Munit Cats Effect]
+* [Cats] and [Cats Effect] for writing composable programs
+* [FS2] for streaming, file I/O, and subprocesses
+* [http4s Ember client] for HTTP requests
+* [Circe] for JSON handling
+* [fs2-data] for CSV handling
+* [Decline Effect] for developing a CLI app
+* [MUnit Cats Effect] for writing tests
 
-and it's published for Scala 2.12, 2.13 and 3.2.2.
+It is published for Scala 2.13 and 3.2+ and also fully supports Scala.js 1.13+ and Scala Native 0.4.
 
-To use it with [Scala CLI] use this directive:
+### Scala JVM
+
+@:select(build-tool)
+@:choice(scala-cli)
 ```scala
-//> using lib "org.typelevel::toolkit::@VERSION@"
+//> using toolkit "typelevel:@VERSION@"
 ```
-
-Albeit being created to be used with [Scala CLI], typelevel-toolkit can be imported into your `build.sbt` using:
+@:choice(sbt)
 ```scala
 libraryDependencies ++= Seq(
   "org.typelevel" %% "toolkit" % "@VERSION@",
   "org.typelevel" %% "toolkit-test" % "@VERSION@" % Test
 )
+```
+@:@
 
-// use %%% for Scala.js and Scala Native
+#### GraalVM Native Image
+
+The `--no-fallback` option is required ([further reading][Native Image]).
+
+@:select(build-tool)
+@:choice(scala-cli)
+The `package` command [supports Native Image](https://scala-cli.virtuslab.org/docs/cookbooks/native-images/).
+```
+scala-cli --power package --native-image myscript.scala -- --no-fallback
+```
+@:choice(sbt)
+Please use the [sbt-native-image plugin](https://github.com/scalameta/sbt-native-image).
+```scala
+enablePlugins(NativeImagePlugin)
+nativeImageOptions += "--no-fallback"
+```
+@:@
+
+### Scala.js
+
+@:select(build-tool)
+@:choice(scala-cli)
+Scala CLI has [excellent support for Scala.js](https://scala-cli.virtuslab.org/docs/guides/scala-js).
+```scala
+//> using toolkit "typelevel:@VERSION@"
+//> using platform "js"
+//> using jsModuleKind "common"
+```
+@:choice(sbt)
+Please use the [sbt-scalajs plugin](https://www.scala-js.org/doc/project/).
+```scala
+enablePlugins(ScalaJSPlugin)
+scalaJSUseMainModuleInitializer := true
+scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule)) 
 libraryDependencies ++= Seq(
   "org.typelevel" %%% "toolkit" % "@VERSION@",
   "org.typelevel" %%% "toolkit-test" % "@VERSION@" % Test
 )
 ```
+@:@
+
+### Scala Native
+
+@:select(build-tool)
+@:choice(scala-cli)
+Scala CLI has [excellent support for Scala Native](https://scala-cli.virtuslab.org/docs/guides/scala-native).
+```scala
+//> using toolkit "typelevel:@VERSION@"
+//> using platform "native"
+```
+@:choice(sbt)
+Please use the [sbt-scala-native plugin](https://scala-native.org/en/stable/user/sbt.html).
+```scala
+enablePlugins(ScalaNativePlugin)
+libraryDependencies ++= Seq(
+  "org.typelevel" %%% "toolkit" % "@VERSION@",
+  "org.typelevel" %%% "toolkit-test" % "@VERSION@" % Test
+)
+```
+@:@
 
 ## Quick Start Example
 @:select(scala-version)
@@ -60,23 +118,15 @@ object Hello extends IOApp.Simple {
 ```
 @:@
 
-### Native Image
-
-When building GraalVM Native Image the --no-fallback option is required, otherwise native-image will try searching
-a static reflection configuration for [this Enumeration method]. Thus using this flag is safe only if you're not using
-Enumerations in your codebase, see [this comment] for more info.
-
 [Scala CLI]: https://scala-cli.virtuslab.org
-[Scala Toolkit]: https://github.com/VirtusLab/toolkit
+[Scala Toolkit]: https://github.com/scala/toolkit
 [Cats]: https://typelevel.org/cats
 [Cats Effect]: https://typelevel.org/cats-effect
-[fs2]: https://fs2.io/#/
-[fs2 I/O]: https://fs2.io/#/io
-[fs2 data csv]: https://fs2-data.gnieh.org/documentation/csv/
-[Http4s Ember Client]: https://http4s.org/v0.23/docs/client.html
+[FS2]: https://fs2.io/#/
+[FS2 I/O]: https://fs2.io/#/io
+[fs2-data]: https://fs2-data.gnieh.org/documentation/csv/
+[http4s Ember Client]: https://http4s.org/v0.23/docs/client.html
 [Circe]: https://circe.github.io/circe/
 [Decline Effect]: https://ben.kirw.in/decline/effect.html
-[Munit Cats Effect]: https://github.com/typelevel/munit-cats-effect
-
-[this Enumeration method]: https://github.com/scala/scala/blob/v2.13.8/src/library/scala/Enumeration.scala#L190-L215=
-[this comment]: https://github.com/typelevel/cats-effect/issues/3051#issuecomment-1167026949
+[MUnit Cats Effect]: https://github.com/typelevel/munit-cats-effect
+[Native Image]: https://github.com/typelevel/cats-effect/issues/3051#issuecomment-1167026949

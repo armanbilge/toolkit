@@ -55,18 +55,17 @@ lazy val docs = project
         appendLinks = List(
           ThemeNavigationSection(
             "Related Projects",
-            TextLink.external("https://github.com/typelevel/fs2", "fs2"),
-            TextLink.external("https://github.com/typelevel/cats", "Cats"),
-            TextLink.external("https://github.com/circe/circe", "Circe"),
-            TextLink.external("https://github.com/http4s/http4s", "Http4s"),
-            TextLink.external("https://github.com/bkirwi/decline", "Decline"),
+            TextLink.external("https://typelevel.org/cats", "Cats"),
+            TextLink
+              .external("https://typelevel.org/cats-effect", "Cats Effect"),
+            TextLink.external("https://fs2.io", "FS2"),
+            TextLink.external("https://http4s.org", "http4s"),
+            TextLink.external("https://circe.github.io/circe", "Circe"),
+            TextLink.external("https://fs2-data.gnieh.org/", "fs2-data"),
+            TextLink.external("http://monovore.com/decline/", "Decline"),
             TextLink.external(
-              "https://github.com/typelevel/cats-effect",
-              "Cats Effect"
-            ),
-            TextLink.external(
-              "https://github.com/typelevel/munit-cats-effect",
-              "Munit Cats Effect"
+              "https://typelevel.org/munit-cats-effect/",
+              "MUnit Cats Effect"
             )
           )
         )
@@ -79,6 +78,11 @@ lazy val docs = project
             "scala-version",
             ChoiceConfig("scala-3", "Scala 3"),
             ChoiceConfig("scala-2", "Scala 2")
+          ),
+          SelectionConfig(
+            "build-tool",
+            ChoiceConfig("scala-cli", "Scala CLI"),
+            ChoiceConfig("sbt", "sbt")
           )
         )
       )
