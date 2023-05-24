@@ -54,6 +54,8 @@ nativeImageOptions += "--no-fallback"
 
 ### Scala.js
 
+You should enable the [CommonJS module kind](https://www.scala-js.org/doc/project/module.html) so that libraries such as FS2 can import Node.js standard library modules.
+
 @:select(build-tool)
 @:choice(scala-cli)
 Scala CLI has [excellent support for Scala.js](https://scala-cli.virtuslab.org/docs/guides/scala-js).
