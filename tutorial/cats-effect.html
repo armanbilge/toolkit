@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Laika 0.19.0 + Helium Theme" />
+  <title>Cats and Cats Effect</title>
+  
+  <meta name="author" content="toolkit contributors"/>
+  
+  
+  <meta name="description" content="docs"/>
+  
+  
+  
+  <link rel="icon" sizes="32x32" type="image/png" href="https://typelevel.org/img/favicon.png"/>
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:500">
+  
+  <link rel="stylesheet" type="text/css" href="../helium/icofont.min.css" />
+    <link rel="stylesheet" type="text/css" href="../helium/laika-helium.css" />
+  <script src="../helium/laika-helium.js"></script>
+  
+  
+  <script> /* for avoiding page load transitions */ </script>
+</head>
+
+  <body>
+
+    <header id="top-bar">
+
+  <div class="row">
+    <a id="nav-icon">
+      <i class="icofont-laika navigationMenu" title="Navigation">&#xefa2;</i>
+    </a>
+    
+    
+  </div>
+
+  <a class="image-link" href="https://typelevel.org"><img src="https://typelevel.org/img/logo.svg"></a>
+
+  <div class="row links">
+    
+    <a class="icon-link svg-link" href="https://github.com/armanbilge/toolkit"><span class="github" title="Source Code"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+  <g class="svg-shape">
+    <path d="M49.995,1c-27.609,-0 -49.995,22.386 -49.995,50.002c-0,22.09 14.325,40.83 34.194,47.444c2.501,0.458 3.413,-1.086 3.413,-2.412c0,-1.185 -0.043,-4.331 -0.067,-8.503c-13.908,3.021 -16.843,-6.704 -16.843,-6.704c-2.274,-5.773 -5.552,-7.311 -5.552,-7.311c-4.54,-3.103 0.344,-3.042 0.344,-3.042c5.018,0.356 7.658,5.154 7.658,5.154c4.46,7.64 11.704,5.433 14.552,4.156c0.454,-3.232 1.744,-5.436 3.174,-6.685c-11.102,-1.262 -22.775,-5.553 -22.775,-24.713c-0,-5.457 1.949,-9.92 5.147,-13.416c-0.516,-1.265 -2.231,-6.348 0.488,-13.233c0,0 4.199,-1.344 13.751,5.126c3.988,-1.108 8.266,-1.663 12.518,-1.682c4.245,0.019 8.523,0.574 12.517,1.682c9.546,-6.47 13.736,-5.126 13.736,-5.126c2.728,6.885 1.013,11.968 0.497,13.233c3.204,3.496 5.141,7.959 5.141,13.416c0,19.209 -11.691,23.436 -22.83,24.673c1.795,1.544 3.394,4.595 3.394,9.26c0,6.682 -0.061,12.076 -0.061,13.715c0,1.338 0.899,2.894 3.438,2.406c19.853,-6.627 34.166,-25.354 34.166,-47.438c-0,-27.616 -22.389,-50.002 -50.005,-50.002"/>
+  </g>
+</svg></span></a>
+    
+    <a class="icon-link glyph-link" href="https://discord.gg/XF3CXcMzqD"><i class="icofont-laika chat" title="Chat">&#xeed5;</i></a>
+    
+    <a class="icon-link glyph-link" href="https://twitter.com/typelevel"><i class="icofont-laika twitter" title="Twitter">&#xed7a;</i></a>
+    
+  </div>  
+
+</header>
+    
+    <nav id="sidebar">
+
+  <div class="row">
+    
+    <a class="icon-link svg-link" href="https://github.com/armanbilge/toolkit"><span class="github" title="Source Code"><svg class="svg-icon" width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+  <g class="svg-shape">
+    <path d="M49.995,1c-27.609,-0 -49.995,22.386 -49.995,50.002c-0,22.09 14.325,40.83 34.194,47.444c2.501,0.458 3.413,-1.086 3.413,-2.412c0,-1.185 -0.043,-4.331 -0.067,-8.503c-13.908,3.021 -16.843,-6.704 -16.843,-6.704c-2.274,-5.773 -5.552,-7.311 -5.552,-7.311c-4.54,-3.103 0.344,-3.042 0.344,-3.042c5.018,0.356 7.658,5.154 7.658,5.154c4.46,7.64 11.704,5.433 14.552,4.156c0.454,-3.232 1.744,-5.436 3.174,-6.685c-11.102,-1.262 -22.775,-5.553 -22.775,-24.713c-0,-5.457 1.949,-9.92 5.147,-13.416c-0.516,-1.265 -2.231,-6.348 0.488,-13.233c0,0 4.199,-1.344 13.751,5.126c3.988,-1.108 8.266,-1.663 12.518,-1.682c4.245,0.019 8.523,0.574 12.517,1.682c9.546,-6.47 13.736,-5.126 13.736,-5.126c2.728,6.885 1.013,11.968 0.497,13.233c3.204,3.496 5.141,7.959 5.141,13.416c0,19.209 -11.691,23.436 -22.83,24.673c1.795,1.544 3.394,4.595 3.394,9.26c0,6.682 -0.061,12.076 -0.061,13.715c0,1.338 0.899,2.894 3.438,2.406c19.853,-6.627 34.166,-25.354 34.166,-47.438c-0,-27.616 -22.389,-50.002 -50.005,-50.002"/>
+  </g>
+</svg></span></a>
+    
+    <a class="icon-link glyph-link" href="https://discord.gg/XF3CXcMzqD"><i class="icofont-laika chat" title="Chat">&#xeed5;</i></a>
+    
+    <a class="icon-link glyph-link" href="https://twitter.com/typelevel"><i class="icofont-laika twitter" title="Twitter">&#xed7a;</i></a>
+    
+  </div>
+
+  <ul class="nav-list">
+    <li class="level1 nav-leaf"><a href="../">typelevel-toolkit</a></li>
+    <li class="level1 nav-leaf"><a href="../examples.html">Examples</a></li>
+    <li class="level1 nav-header">tutorial</li>
+    <li class="level2 active nav-leaf"><a href="#">Cats and Cats Effect</a></li>
+    <li class="level1 nav-header">Related Projects</li>
+    <li class="level2 nav-leaf"><a href="https://typelevel.org/cats">Cats</a></li>
+    <li class="level2 nav-leaf"><a href="https://typelevel.org/cats-effect">Cats Effect</a></li>
+    <li class="level2 nav-leaf"><a href="https://fs2.io">FS2</a></li>
+    <li class="level2 nav-leaf"><a href="https://http4s.org">http4s</a></li>
+    <li class="level2 nav-leaf"><a href="https://circe.github.io/circe">Circe</a></li>
+    <li class="level2 nav-leaf"><a href="https://fs2-data.gnieh.org/">fs2-data</a></li>
+    <li class="level2 nav-leaf"><a href="http://monovore.com/decline/">Decline</a></li>
+    <li class="level2 nav-leaf"><a href="https://typelevel.org/munit-cats-effect/">MUnit Cats Effect</a></li>
+  </ul>
+
+</nav>
+
+    <div id="container">
+
+      
+<nav id="page-nav">
+  <p class="header"><a href="#">Cats and Cats Effect</a></p>
+
+  <ul class="nav-list">
+    <li class="level1 nav-leaf"><a href="#writing-a-cats-effect-program">Writing a Cats Effect program</a></li>
+    <li class="level1 nav-leaf"><a href="#running-a-cats-effect-program">Running a Cats Effect program</a></li>
+    <li class="level1 nav-leaf"><a href="#passing-results-between-steps-of-your-program">Passing results between steps of your program</a></li>
+  </ul>
+
+  <p class="footer"></p>
+</nav>
+
+
+      <main class="content">
+
+        <h1 id="cats-and-cats-effect" class="title">Cats and Cats Effect</h1>
+        <p>Cats and Cats Effect are the backbone of all Typelevel Scala applications. Together, they enable us to build and compose programs, and then execute these programs on a high-performance runtime.</p>
+        
+        <h2 id="writing-a-cats-effect-program" class="section"><a class="anchor-link left" href="#writing-a-cats-effect-program"><i class="icofont-laika link">&#xef71;</i></a>Writing a Cats Effect program</h2>
+        <p>To write a Cats Effect program we work with a special datatype <code>IO</code>. More specifically, <code>IO</code> is a building block for creating programs. You can combine it with other <code>IO</code>s to make another, “bigger” <code>IO</code> that is a program with more steps in it.</p>
+        <p>Let’s look at an example. Here is an <code>IO</code> program. If we were to run this program, it would print <code>&quot;hello&quot;</code>.</p>
+        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">helloProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;hello&quot;</span><span>)</span></code></pre>
+        <p>Here is a similar program, that prints <code>&quot;world&quot;</code> when run.</p>
+        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">worldProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;world&quot;</span><span>)</span></code></pre>
+        <p>What if we want a program that, when run, prints <code>&quot;hello&quot;</code> and then prints <code>&quot;world&quot;</code>? Let’s combine our <code>helloProgram</code> and our <code>worldProgram</code> using the <code>*&gt;</code> “and then” operator. Now, we have a <code>helloWorldProgram</code>!</p>
+        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">helloWorldProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloProgram</span><span> *&gt; </span><span class="identifier">worldProgram</span></code></pre>
+        <p>We can visualize how the <code>IO</code>s are combined into a larger program. This is because <code>IO</code> is actually a datatype.</p>
+        <pre class="mermaid">
+flowchart LR
+  subgraph &quot;helloWorldProgram: IO[Unit]&quot;
+    direction LR
+    hello[&quot;IO.println(#quot;hello#quot;)&quot;] -- &quot;*&gt;&quot; --&gt; world[&quot;IO.println(#quot;world#quot;)&quot;];
+  end
+</pre>
+        <p>We can continue combining the <code>helloWorldProgram</code> with other <code>IO</code>s to add more steps and build an even bigger <code>IO</code> program.</p>
+        <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">helloWorldByeProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloWorldProgram</span><span> *&gt; </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;kbye&quot;</span><span>)</span></code></pre>
+        <pre class="mermaid">
+flowchart LR
+  subgraph &quot;helloWorldByeProgram: IO[Unit]&quot;
+    direction LR
+    subgraph helloWorld[&quot;helloWorldProgram: IO[Unit]&quot;]
+      direction LR
+      hello[&quot;IO.println(#quot;hello#quot;)&quot;] -- &quot;*&gt;&quot; --&gt; world[&quot;IO.println(#quot;world#quot;)&quot;];
+    end
+    helloWorld[&quot;helloProgram: IO[Unit]&quot;] -- &quot;*&gt;&quot; --&gt; bye[&quot;IO.println(#quot;kbye#quot;)&quot;];
+  end
+</pre>
+        <p><strong>So far all that we have done is create data</strong>: a description of a program that, when run, will print <code>&quot;hello&quot;</code>, then <code>&quot;world&quot;</code>, then <code>&quot;kbye&quot;</code>. In the next section we will see how we can bring this data to life as a running application.</p>
+        <div class="callout warning">
+          <i class="icofont-laika warning">&#xf026;</i>
+          <p>In other programming languages, you may be used to adding a new step to your program by adding a new line.</p>
+          <pre class="keep-together pdf epub"><code class="nohighlight"><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;hello&quot;</span><span>)
+</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;world&quot;</span><span>)
+</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;kbye&quot;</span><span>)</span></code></pre>
+          <p><strong>This will not work with <code>IO</code> programs</strong>. Instead of building up a source file by adding lines, you build up an <code>IO</code> by combining <code>IO</code>s with <code>*&gt;</code> and other operators.</p>
+          <pre class="keep-together pdf epub"><code class="nohighlight"><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;hello&quot;</span><span>) *&gt; </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;world&quot;</span><span>) *&gt; </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;kbye&quot;</span><span>)</span></code></pre>
+        </div>
+        
+        <h2 id="running-a-cats-effect-program" class="section"><a class="anchor-link left" href="#running-a-cats-effect-program"><i class="icofont-laika link">&#xef71;</i></a>Running a Cats Effect program</h2>
+        <p>We are done building our program! To run it, we will create an <code>IOApp</code> and assign our <code>IO</code> program to <code>val run</code>. This hands the program data over to the Cats Effect runtime, which will step through and actually execute it for us.</p>
+        <div class="tab-container" data-tab-group="scala-version">
+          <ul class="tab-group">
+            <li class="tab active" data-choice-name="scala-3"><a href="#">Scala 3</a></li>
+            <li class="tab" data-choice-name="scala-2"><a href="#">Scala 2</a></li>
+          </ul>
+          <div class="tab-content active" data-choice-name="scala-3">
+            <pre><code class="nohighlight"><span class="comment">//&gt; using toolkit typelevel:0.0.11
+</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="type-name">IO</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="type-name">IOApp</span><span>
+
+</span><span class="keyword">object</span><span> </span><span class="type-name">HelloApp</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">IOApp</span><span>.</span><span class="type-name">Simple</span><span>:
+  </span><span class="keyword">val</span><span> </span><span class="identifier">helloProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;hello&quot;</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">worldProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;world&quot;</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">helloWorldProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloProgram</span><span> *&gt; </span><span class="identifier">worldProgram</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">helloWorldByeProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloWorldProgram</span><span> *&gt; </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;kbye&quot;</span><span>)
+
+  </span><span class="comment">// give our program to the Cats Effect runtime for execution
+</span><span>  </span><span class="keyword">val</span><span> </span><span class="identifier">run</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloWorldByeProgram</span></code></pre>
+          </div>
+          <div class="tab-content" data-choice-name="scala-2">
+            <pre><code class="nohighlight"><span class="comment">//&gt; using toolkit typelevel:0.0.11
+</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="type-name">IO</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="type-name">IOApp</span><span>
+
+</span><span class="keyword">object</span><span> </span><span class="type-name">HelloApp</span><span> </span><span class="keyword">extends</span><span> </span><span class="type-name">IOApp</span><span>.</span><span class="type-name">Simple</span><span> {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">helloProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;hello&quot;</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">worldProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;world&quot;</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">helloWorldProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloProgram</span><span> *&gt; </span><span class="identifier">worldProgram</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">helloWorldByeProgram</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloWorldProgram</span><span> *&gt; </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;kbye&quot;</span><span>)
+
+  </span><span class="comment">// give our program to the Cats Effect runtime for execution
+</span><span>  </span><span class="keyword">val</span><span> </span><span class="identifier">run</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] = </span><span class="identifier">helloWorldProgram</span><span>
+}</span></code></pre>
+          </div>
+        </div>
+        <p>Save this as <code>hello.scala</code> and run it with <a href="https://scala-cli.virtuslab.org/">Scala CLI</a>.</p>
+        <pre><code>$ scala-cli hello.scala
+hello
+world
+kbye</code></pre>
+        <div class="callout info">
+          <i class="icofont-laika info">&#xef4e;</i>
+          <p>Cats Effect has specialized runtimes for the Java Virtual Machine, Node.js, and standalone Native executables. As long as you build your <code>IO</code> program using only Typelevel libraries, Cats Effect will run it on any supported platform with identical semantics and behavior.</p>
+          <pre><code>$ scala-cli --js hello.scala
+$ scala-cli --native hello.scala</code></pre>
+        </div>
+        
+        <h2 id="passing-results-between-steps-of-your-program" class="section"><a class="anchor-link left" href="#passing-results-between-steps-of-your-program"><i class="icofont-laika link">&#xef71;</i></a>Passing results between steps of your program</h2>
+        <p>So far, all of our programs have had type <code>IO[Unit]</code>. These are programs that complete with a value of type <code>Unit</code> aka “void”. As this result offers minimal information, we have been content to combine our <code>IO</code>s using the <code>*&gt;</code> “and then” operator which simply discards the result of the left-hand-side.</p>
+        <p>In a more complex application, our <code>IO</code> programs can produce interesting results. We may want subsequent steps in our program to use those results so we will need a way to pass them along.</p>
+        <p>Let’s look at an example. Consider the program <code>IO.realTime: IO[FiniteDuration]</code>. This is an <code>IO</code> program that, when run, returns the current time (reported as the number of microseconds since the <a href="https://en.wikipedia.org/wiki/Unix_time">Unix epoch</a>).</p>
+        <p>Now suppose we want to print this time using the <code>IO.println(...)</code> program. To combine <code>IO</code> programs while passing results from left-to-right we use the <code>flatMap</code> operator.</p>
+        <div class="tab-container" data-tab-group="scala-version">
+          <ul class="tab-group">
+            <li class="tab active" data-choice-name="scala-3"><a href="#">Scala 3</a></li>
+            <li class="tab" data-choice-name="scala-2"><a href="#">Scala 2</a></li>
+          </ul>
+          <div class="tab-content active" data-choice-name="scala-3">
+            <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">printUnixTime</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] =
+  </span><span class="type-name">IO</span><span>.</span><span class="identifier">realTime</span><span>.</span><span class="identifier">flatMap</span><span>: </span><span class="identifier">time</span><span> =&gt;
+    </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="identifier">time</span><span>)</span></code></pre>
+          </div>
+          <div class="tab-content" data-choice-name="scala-2">
+            <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">printUnixTime</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] =
+  </span><span class="type-name">IO</span><span>.</span><span class="identifier">realTime</span><span>.</span><span class="identifier">flatMap</span><span> { </span><span class="identifier">time</span><span> =&gt;
+    </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="identifier">time</span><span>)
+  }</span></code></pre>
+          </div>
+        </div>
+        <p>Here, <code>flatMap</code> binds the result of the first step <code>IO.realTime</code> to the <code>time</code> parameter. Now that we have the <code>time</code>, we can use it to build the next step <code>IO.println(time)</code>. Finally, <code>flatMap</code> combines these two steps into a new <code>IO</code> which we call <code>printUnixTime</code>.</p>
+        <pre class="mermaid">
+flowchart LR
+  subgraph &quot;printUnixTime: IO[Unit]&quot;
+    direction LR
+    realTime[&quot;IO.realTime&quot;] -- &quot;flatMap: time&quot; --&gt; println[&quot;IO.println(time)&quot;];
+  end
+</pre>
+        <p>If we make an <code>IOApp</code> and run this program then we will get an output like this.</p>
+        <pre><code>1686438032685889 microseconds</code></pre>
+        <p>Do you <em>know</em> what time it is now?</p>
+        <p>We need something more human-readable but <code>IO.realTime</code> gives the result in an annoying format. So we will use the <code>map</code> operator to transform the <code>IO[FiniteDuration]</code> program into a <code>IO[Instant]</code> program. Then we will use <code>flatMap</code> as above to print the <code>Instant</code>.</p>
+        <div class="tab-container" data-tab-group="scala-version">
+          <ul class="tab-group">
+            <li class="tab active" data-choice-name="scala-3"><a href="#">Scala 3</a></li>
+            <li class="tab" data-choice-name="scala-2"><a href="#">Scala 2</a></li>
+          </ul>
+          <div class="tab-content active" data-choice-name="scala-3">
+            <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">java</span><span>.</span><span class="identifier">time</span><span>.</span><span class="type-name">Instant</span><span>
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">humanTime</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Instant</span><span>] =
+  </span><span class="type-name">IO</span><span>.</span><span class="identifier">realTime</span><span>.</span><span class="identifier">map</span><span>: </span><span class="identifier">unixTime</span><span> =&gt;
+    </span><span class="type-name">Instant</span><span>.</span><span class="type-name">EPOCH</span><span>.</span><span class="identifier">plusNanos</span><span>(</span><span class="identifier">unixTime</span><span>.</span><span class="identifier">toNanos</span><span>)
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">printHumanTime</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] =
+  </span><span class="identifier">humanTime</span><span>.</span><span class="identifier">flatMap</span><span>: </span><span class="identifier">time</span><span> =&gt;
+    </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="identifier">time</span><span>)</span></code></pre>
+          </div>
+          <div class="tab-content" data-choice-name="scala-2">
+            <pre class="keep-together pdf epub"><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">java</span><span>.</span><span class="identifier">time</span><span>.</span><span class="type-name">Instant</span><span>
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">humanTime</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Instant</span><span>] =
+  </span><span class="type-name">IO</span><span>.</span><span class="identifier">realTime</span><span>.</span><span class="identifier">map</span><span> { </span><span class="identifier">unixTime</span><span> =&gt;
+    </span><span class="type-name">Instant</span><span>.</span><span class="type-name">EPOCH</span><span>.</span><span class="identifier">plusNanos</span><span>(</span><span class="identifier">unixTime</span><span>.</span><span class="identifier">toNanos</span><span>)
+  }
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">printHumanTime</span><span>: </span><span class="type-name">IO</span><span>[</span><span class="type-name">Unit</span><span>] =
+  </span><span class="identifier">humanTime</span><span>.</span><span class="identifier">flatMap</span><span> { </span><span class="identifier">time</span><span> =&gt;
+    </span><span class="type-name">IO</span><span>.</span><span class="identifier">println</span><span>(</span><span class="identifier">time</span><span>)
+  }</span></code></pre>
+          </div>
+        </div>
+        <p>If we study the visual, we see that our program still only has two fundamental steps: the <code>IO.realTime</code> and the <code>IO.println(...)</code>. The <code>map</code> operator transforms the first step so that its result is more useful. Then the <code>flatMap</code> operator combines the two steps into our final program.</p>
+        <pre class="mermaid">
+flowchart LR
+  subgraph &quot;printHumanTime: IO[Unit]&quot;
+    direction LR
+    subgraph humanTime[&quot;humanTime: IO[Instant]&quot;]
+      direction LR
+      realTime[&quot;IO.realTime&quot;] -- &quot;map: unixTime to Instant&quot; --&gt; mapped[ ];
+      style mapped width:0px;
+    end
+    humanTime -- &quot;flatMap: time&quot; --&gt; println[&quot;IO.println(time)&quot;];
+  end
+</pre>
+        <p><script type="module" src="mermaid.js"></script></p>
+        <p>When we make an <code>IOApp</code> for <code>printHumanTime</code> we get this, could be worse!</p>
+        <pre><code>2023-06-10T23:33:21.399386Z</code></pre>
+
+        
+<hr class="footer-rule"/>
+<footer>
+  toolkit is a <a href="https://typelevel.org/">Typelevel</a> project distributed under the <a href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache-2.0</a> license.
+</footer>
+
+
+      </main>
+
+    </div>
+
+  </body>
+
+</html>
