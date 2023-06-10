@@ -51,25 +51,28 @@ lazy val docs = project
   .settings(
     scalaVersion := "3.2.2",
     tlSiteHelium ~= {
-      _.site.mainNavigation(
-        appendLinks = List(
-          ThemeNavigationSection(
-            "Related Projects",
-            TextLink.external("https://typelevel.org/cats", "Cats"),
-            TextLink
-              .external("https://typelevel.org/cats-effect", "Cats Effect"),
-            TextLink.external("https://fs2.io", "FS2"),
-            TextLink.external("https://http4s.org", "http4s"),
-            TextLink.external("https://circe.github.io/circe", "Circe"),
-            TextLink.external("https://fs2-data.gnieh.org/", "fs2-data"),
-            TextLink.external("http://monovore.com/decline/", "Decline"),
-            TextLink.external(
-              "https://typelevel.org/munit-cats-effect/",
-              "MUnit Cats Effect"
+      _.site
+        .mainNavigation(
+          appendLinks = List(
+            ThemeNavigationSection(
+              "Related Projects",
+              TextLink.external("https://typelevel.org/cats", "Cats"),
+              TextLink
+                .external("https://typelevel.org/cats-effect", "Cats Effect"),
+              TextLink.external("https://fs2.io", "FS2"),
+              TextLink.external("https://http4s.org", "http4s"),
+              TextLink.external("https://circe.github.io/circe", "Circe"),
+              TextLink.external("https://fs2-data.gnieh.org/", "fs2-data"),
+              TextLink.external("http://monovore.com/decline/", "Decline"),
+              TextLink.external(
+                "https://typelevel.org/munit-cats-effect/",
+                "MUnit Cats Effect"
+              )
             )
           )
         )
-      )
+        .site
+        .autoLinkJS()
     },
     laikaConfig ~= {
       _.withConfigValue(
@@ -85,6 +88,6 @@ lazy val docs = project
             ChoiceConfig("sbt", "sbt")
           )
         )
-      )
+      ).withRawContent
     }
   )
